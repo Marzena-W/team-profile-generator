@@ -39,7 +39,7 @@ inquirer.prompt([
 ])
     .then(response => {
         // populate manager info
-
+        console.log(response)
 
         promptForNexEmployee()
     })
@@ -60,7 +60,7 @@ const promptForNextEmployee = () => {
                 promptForIntern()
             else
                 //  use the functionality from page-template to generate the team
-                generateTeam()
+                buildPage()
         })
 }
 
@@ -89,7 +89,7 @@ const promptForEngineer = () => {
     ])
         .then(response => {
             // add new engineer to employees array
-
+            console.log(response)
 
             promptForNextEmployee()
         })
@@ -120,12 +120,19 @@ const promptForIntern = () => {
         },
     ]).then(response => {
         // add new intern to employees array
+        console.log(response)
 
-        
         promptForNextEmployee()
     })
 }
 
 const buildPage = () => {
+    inquirer.prompt()
+    .then(response => {
+        console.log(response)
+        writeToFile("team.html", outputPath)
+    })
     render(employees)
 }
+
+buildPage();
