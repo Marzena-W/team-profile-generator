@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/Marzena-W/team-profile-generator#readme",
   "devDependencies": {
+    "fs": "^0.0.1-security",
+    "inquirer": "^6.5.0",
+    "path": "^0.12.7"
+  },
+  "dependencies": {
     "jest": "^29.4.3"
   }
 }

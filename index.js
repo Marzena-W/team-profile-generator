@@ -37,12 +37,12 @@ inquirer.prompt([
         name: "officeNumber",
     },
 ])
-    .then(response => {
+    .then((response) => {
         // populate manager info
-        console.log(response)
-
-        promptForNexEmployee()
-    })
+        const manager = new Manager(response.name, response.id, response.email, response.officeNumber);
+        employees.push(manager);
+        promptForNexEmployee();
+    });
 
 const promptForNextEmployee = () => {
     inquirer.prompt([{
@@ -50,7 +50,17 @@ const promptForNextEmployee = () => {
         type: "list",
         message: "Would you like to add another memeber? (Use arrow keys)",
         name: "nextMember",
-        choices: ["Engineer", "Intern", "I don't want to add more team members"],
+        choices: [
+            {
+                name: "Engineer",
+            },
+            {
+                name: "Intern",
+            },
+            {
+                name: "I don't want to add more team members"
+            }
+        ],
     }
     ])
         .then(response => {
@@ -61,8 +71,8 @@ const promptForNextEmployee = () => {
             else
                 //  use the functionality from page-template to generate the team
                 buildPage()
-        })
-}
+        });
+};
 
 const promptForEngineer = () => {
     inquirer.prompt([{
@@ -87,10 +97,10 @@ const promptForEngineer = () => {
         name: "github",
     },
     ])
-        .then(response => {
-            // add new engineer to employees array
-            console.log(response)
-
+        .then((response) => {
+            // populate manager info
+            const engineer = new Engineer(response.name, response.id, response.email, response.userName);    
+            employees.push(engineer);
             promptForNextEmployee()
         })
 }
@@ -118,21 +128,14 @@ const promptForIntern = () => {
             message: "What is your engineer's school?",
             name: "school",
         },
-    ]).then(response => {
-        // add new intern to employees array
-        console.log(response)
-
-        promptForNextEmployee()
-    })
-}
+    ]).then((response) => {
+        // populate manager info
+        const intern = new Intern(response.name, response.id, response.email, response.school);
+        employees.push(intern);
+        promptForNextEmployee();
+    });
+};
 
 const buildPage = () => {
-    inquirer.prompt()
-    .then(response => {
-        console.log(response)
-        writeToFile("team.html", outputPath)
-    })
-    render(employees)
+    fs.writeToFile(outputPath, render(employees))
 }
-
-buildPage();
