@@ -1,0 +1,22 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "A nodeJS application that generates an HTML page for a team of engineers and interns",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marzena-W/team-profile-generator.git"
+  },
+  "author": "Marzena W",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marzena-W/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/Marzena-W/team-profile-generator#readme"
+}
